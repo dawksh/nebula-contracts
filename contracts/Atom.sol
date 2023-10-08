@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.19;
 
-contract Element {
+contract Atom {
     address internal _nebula;
     address internal _issuer;
 
@@ -18,7 +18,7 @@ contract Element {
         _;
     }
 
-    function bond(bytes32 _data) external onlyNebula returns (bool) {
+    function bond(bytes calldata data) external onlyNebula returns (bool) {
         //  TODO
     }
 
