@@ -1,14 +1,24 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.19;
 
-import {Atom} from "./Atom.sol";
+import {IAtom} from "./IAtom.sol";
+import {Registry} from "./AtomRegistry.sol";
 
 contract Nebula {
+    Registry registry;
+
+    constructor(address _registry) {
+        registry = Registry(_registry);
+    }
+
+    event BondCreated(bytes32 indexed atom, address element);
+
     error BondingFailed();
 
-    function createBond(address _atom, bytes calldata data) external {
-        Atom atom = Atom(_atom);
+    function createBond(bytes32 _atom, bytes calldata data) external {
+        IAtom atom = IAtom(registry.resolve(_atom));
         bool success = atom.bond(data);
         if (!success) revert BondingFailed();
+        emit BondCreated(_atom, msg.sender);
     }
 }
