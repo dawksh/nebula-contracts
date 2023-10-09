@@ -1,13 +1,11 @@
-# Sample Hardhat Project
+# nebula protocol
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+A permissionless onchain identity oracle protocol.
 
-Try running some of the following tasks:
+## todos
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
-```
+- [x] atom Basic Structure
+- [x] creating a Bond
+- [x] registering a Atom
+- [ ] breaking bonds
+- [ ] an example Atom (thinking ENS right now)
