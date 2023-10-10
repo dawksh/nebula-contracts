@@ -11,14 +11,14 @@ contract Nebula {
         registry = Registry(_registry);
     }
 
-    event BondCreated(bytes32 indexed atom, address element);
+    event BondCreated(bytes32 indexed atom, address element, bytes32 atomUid);
 
     error BondingFailed();
 
     function createBond(bytes32 _atom, bytes calldata data) external {
         IAtom atom = IAtom(registry.resolve(_atom));
-        bool success = atom.bond(data);
+        (bool success, bytes32 uid) = atom.bond(data);
         if (!success) revert BondingFailed();
-        emit BondCreated(_atom, msg.sender);
+        emit BondCreated(_atom, msg.sender, uid);
     }
 }

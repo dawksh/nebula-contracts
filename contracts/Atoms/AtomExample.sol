@@ -18,7 +18,9 @@ contract Atom {
         _;
     }
 
-    function bond(bytes calldata data) external onlyNebula returns (bool) {
+    function bond(
+        bytes calldata data
+    ) external onlyNebula returns (bool, bytes32) {
         //  TODO
     }
 

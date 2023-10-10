@@ -2,7 +2,7 @@
 pragma solidity ^0.8.19;
 
 interface IAtom {
-    function bond(bytes calldata data) external returns (bool);
+    function bond(bytes calldata data) external returns (bool, bytes32);
 
     function unbond(bytes32 _data) external returns (bool);
 
