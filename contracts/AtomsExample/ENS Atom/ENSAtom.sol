@@ -32,7 +32,11 @@ contract ENSAtom {
     function bond(
         bytes calldata data
     ) external onlyNebula returns (bool, bytes32) {
-        (address sender, bytes32 node) = abi.decode(data, (address, bytes32));
+        (address sender, bytes memory _data) = abi.decode(
+            data,
+            (address, bytes)
+        );
+        bytes32 node = abi.decode(_data, (bytes32));
         if (_addressToUidMap[sender] != bytes32(0)) revert UIDExists();
         IPublicResolver resolver = IPublicResolver(ens.resolver(node));
         address addr = resolver.addr(node);
@@ -46,11 +50,15 @@ contract ENSAtom {
         return (true, uid);
     }
 
-    function unbond(bytes calldata _data) external onlyNebula returns (bool) {
-        address sender = abi.decode(_data, (address));
+    function unbond(bytes calldata data) external onlyNebula returns (bytes32) {
+        (address sender, bytes memory _data) = abi.decode(
+            data,
+            (address, bytes)
+        );
         if (_addressToUidMap[sender] == bytes32(0)) revert UIDExists();
+        bytes32 uid = _addressToUidMap[sender];
         delete _addressToUidMap[sender];
-        return true;
+        return uid;
     }
 
     function verifyBond(bytes calldata data) external returns (bool) {

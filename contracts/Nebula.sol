@@ -12,13 +12,20 @@ contract Nebula {
     }
 
     event BondCreated(bytes32 indexed atom, address element, bytes32 atomUid);
+    event UnBond(bytes32 indexed atom, address element, bytes32 atomUid);
 
     error BondingFailed();
 
     function createBond(bytes32 _atom, bytes calldata data) external {
         IAtom atom = IAtom(registry.resolve(_atom));
-        (bool success, bytes32 uid) = atom.bond(data);
+        (bool success, bytes32 uid) = atom.bond(abi.encode(msg.sender, data));
         if (!success) revert BondingFailed();
         emit BondCreated(_atom, msg.sender, uid);
+    }
+
+    function unbond(bytes32 _atom, bytes calldata data) external {
+        IAtom atom = IAtom(registry.resolve(_atom));
+        bytes32 uid = atom.unbond(abi.encode(msg.sender, data));
+        emit UnBond(_atom, msg.sender, uid);
     }
 }
