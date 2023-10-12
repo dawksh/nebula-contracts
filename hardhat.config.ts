@@ -7,9 +7,14 @@ dotenv();
 const config: HardhatUserConfig = {
   solidity: "0.8.19",
   networks: {
-    goerli: {
-      url: process.env.GOERLI_URL,
+    sepolia: {
+      url: process.env.SEPOLIA_URL as string,
       accounts: [process.env.PRIVATE_KEY as string],
+    }
+  },
+  etherscan: {
+    apiKey: {
+      sepolia: process.env.ETHERSCAN_KEY as string,
     }
   }
 };
