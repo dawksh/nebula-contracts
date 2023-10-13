@@ -61,18 +61,14 @@ contract ENSAtom {
         return uid;
     }
 
-    function verifyBond(bytes calldata data) external returns (bool) {
+    function verifyBond(bytes calldata data) external view returns (bool) {
         bytes32 uid = abi.decode(data, (bytes32));
         address sender = _uidToAddressMap[uid];
         if (_addressToUidMap[sender] == bytes32(0)) revert UIDNotExists();
         bytes32 node = addressToNodeMap[sender];
         IPublicResolver resolver = IPublicResolver(ens.resolver(node));
         address addr = resolver.addr(node);
-        if (addr != sender) {
-            delete _addressToUidMap[sender];
-            delete addressToNodeMap[sender];
-            return false;
-        }
+        if (addr != sender) return false;
         return true;
     }
 
