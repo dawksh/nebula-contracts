@@ -22,13 +22,19 @@ const config: HardhatUserConfig = {
     optimismGoerli: {
       url: process.env.OPTIMISM_GOERLI_URL as string,
       accounts: [process.env.PRIVATE_KEY as string],
-    }
+    },
+    mumbai: {
+      url: process.env.MUMBAI_URL as string,
+      accounts: [process.env.PRIVATE_KEY as string],
+    },
   },
   etherscan: {
     apiKey: {
       sepolia: process.env.ETHERSCAN_KEY as string,
       zkEVM: process.env.POLYGONSCAN_KEY as string,
       optimisticGoerli: process.env.OPTIMISM_KEY as string,
+      polygonMumbai: process.env.POLYGONSCAN_KEY as string,
+      goerli: process.env.ETHERSCAN_KEY as string,
     },
     customChains: [
       {
