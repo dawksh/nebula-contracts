@@ -2,6 +2,22 @@
 
 A permissionless standardized onchain identity oracle protocol.
 
+## how does it work?
+
+in nebula protocol, we have the main protocol called nebula which consists of elements, which are the users to whom, the identities, in the protocol terms, atoms are associated to.
+
+so,
+<br/>
+user = element
+<br/>
+identity = atom
+
+every element can own a collection of atoms. these atoms are a set of smart contract which can have custom logic for issuance or and verification of the identity of an element. any issuer can write these smart contracts to add more functionality to these idenities, supercharging identities in short.
+
+an example atom can be found in `/contracts/AtomsExample/ENS Atom` folder. `ENSAtom.sol` contains the code for smart contract for issuing ENS identities.
+
+possibilities are endless. never stop building 🛠️
+
 ## todos
 
 - [x] atom Basic Structure
