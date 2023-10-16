@@ -1,7 +1,7 @@
 import { ethers, run } from "hardhat";
 
 async function main() {
-    const atom = await ethers.deployContract("ENSAtom", ["0xf2807be61bf5aff82361da275baba1467c5b9604"]);
+    const atom = await ethers.deployContract("ENSAtom", ["0x29ea9C5c8F765dfcDbfaA38FFe2bAB5116BC5ffb"]);
 
     await atom.waitForDeployment();
 
@@ -10,7 +10,7 @@ async function main() {
     try {
         await run("verify:verify", {
             address: await atom.getAddress(),
-            constructorArguments: ["0xf2807be61bf5aff82361da275baba1467c5b9604"],
+            constructorArguments: ["0x29ea9C5c8F765dfcDbfaA38FFe2bAB5116BC5ffb"],
         });
     } catch (error) {
         console.log(error);
