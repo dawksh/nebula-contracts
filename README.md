@@ -42,7 +42,7 @@ This release brings out cross chain wormhole deployments.
 #### Polygon Mumbai
 
 - [Registry](https://mumbai.polygonscan.com/address/0x7d1885662a7f021f4757f5be847e721a38826cdc)
-- [Nebula](https://mumbai.polygonscan.com/address/0x184e1f7aeed0c44cc7f8ea6cb14a598c09166352)
+- [Nebula](https://mumbai.polygonscan.com/address/0x5c3EBd455a7844b9A701A0E4685F0C02a522E421)
 
 ### v 0.0.1
 
