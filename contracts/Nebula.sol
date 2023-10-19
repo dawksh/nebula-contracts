@@ -25,8 +25,14 @@ contract Nebula is IWormholeReceiver {
         bytes32 atomUid,
         uint256 originChain
     );
+    event CrossChainBondSent(
+        bytes32 indexed atom,
+        bytes32 atomUid,
+        uint256 outboundChain
+    );
 
     error BondingFailed();
+    error InvalidBond();
 
     function createBond(bytes32 _atom, bytes calldata data) external {
         IAtom atom = IAtom(registry.resolve(_atom));
@@ -61,6 +67,9 @@ contract Nebula is IWormholeReceiver {
             GAS_LIMIT
         );
         if (msg.value != cost) revert();
+        IAtom atomContract = IAtom(registry.resolve(atom));
+        bool v = atomContract.verifyBond(abi.encode(atomUid));
+        if (!v) revert InvalidBond();
         deliveryHash = relayer.sendPayloadToEvm{value: msg.value}(
             targetChain,
             targetAddress,
@@ -68,6 +77,7 @@ contract Nebula is IWormholeReceiver {
             0,
             GAS_LIMIT
         );
+        emit CrossChainBondSent(atom, atomUid, targetChain);
     }
 
     function receiveWormholeMessages(
