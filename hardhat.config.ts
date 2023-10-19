@@ -27,6 +27,10 @@ const config: HardhatUserConfig = {
       url: process.env.MUMBAI_URL as string,
       accounts: [process.env.PRIVATE_KEY as string],
     },
+    fuji: {
+      url: process.env.AVALANCHE_URL as string,
+      accounts: [process.env.PRIVATE_KEY as string],
+    }
   },
   etherscan: {
     apiKey: {
