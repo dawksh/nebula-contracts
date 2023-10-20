@@ -39,6 +39,7 @@ const config: HardhatUserConfig = {
       optimisticGoerli: process.env.OPTIMISM_KEY as string,
       polygonMumbai: process.env.POLYGONSCAN_KEY as string,
       goerli: process.env.ETHERSCAN_KEY as string,
+      avalancheFujiTestnet: process.env.AVAX_KEY as string,
     },
     customChains: [
       {

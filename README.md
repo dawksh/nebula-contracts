@@ -44,6 +44,10 @@ This release brings out cross chain wormhole deployments.
 - [Registry](https://mumbai.polygonscan.com/address/0x7d1885662a7f021f4757f5be847e721a38826cdc)
 - [Nebula](https://mumbai.polygonscan.com/address/0x5c3EBd455a7844b9A701A0E4685F0C02a522E421)
 
+#### Avax Fuji Testnet
+- [Regsitry](https://testnet.snowtrace.io/address/0x29ea9C5c8F765dfcDbfaA38FFe2bAB5116BC5ffb)
+- [Nebula](https://testnet.snowtrace.io/address/0xce51B4485aaf9e72B03C566aC88454D85493785B)
+
 ### v 0.0.1
 
 #### Sepolia
