@@ -39,6 +39,8 @@ This release brings out cross chain wormhole deployments.
 - [Nebula](https://goerli.etherscan.io/address/0x5c3EBd455a7844b9A701A0E4685F0C02a522E421)
 - [ENSAtom](https://goerli.etherscan.io/address/0x0E58e5E5D927D319A46b8B554Df5d1C4AAdf6928)
 
+- [Subgraph](https://thegraph.com/studio/subgraph/nebula-goerli/)
+
 #### Polygon Mumbai
 
 - [Registry](https://mumbai.polygonscan.com/address/0x7d1885662a7f021f4757f5be847e721a38826cdc)
