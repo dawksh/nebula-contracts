@@ -4,14 +4,10 @@ const wormholeRelayer = network.name == "goerli" ? "0x28D8F1Be96f97C1387e94A53e0
 
 async function main() {
   const regsitry = await ethers.deployContract("Registry");
+  await regsitry.deploymentTransaction()?.wait(3);
 
-  await regsitry.waitForDeployment();
 
   console.log("Registry deployed to:", await regsitry.getAddress());
-
-  const nebula = await ethers.deployContract("Nebula", [await regsitry.getAddress(), wormholeRelayer]);
-
-  console.log("Nebula deployed to:", await nebula.getAddress());
 
   try {
     await run("verify:verify", {
@@ -22,6 +18,11 @@ async function main() {
     console.log(error);
   }
 
+  const nebula = await ethers.deployContract("Nebula", [await regsitry.getAddress(), wormholeRelayer]);
+  await nebula.deploymentTransaction()?.wait(3);
+
+  console.log("Nebula deployed to:", await nebula.getAddress());
+
   try {
     await run("verify:verify", {
       address: await nebula.getAddress(),
@@ -30,7 +31,6 @@ async function main() {
   } catch (error) {
     console.log(error);
   }
-
 }
 
 // We recommend this pattern to be able to use async/await everywhere
